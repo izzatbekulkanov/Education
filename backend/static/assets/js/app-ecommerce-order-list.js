@@ -36,7 +36,7 @@ $(function () {
     };
 
   // E-commerce Products datatable
-
+var attachmentBookUrl = "attachment_book";
   if (dt_order_table.length) {
     var dt_products = dt_order_table.DataTable({
       ajax: assetsPath + 'json/ecommerce-customer-order.json', // JSON file to add data
@@ -202,8 +202,10 @@ $(function () {
             );
           }
         },
+
         {
           // Actions
+
           targets: -1,
           title: 'Actions',
           searchable: false,
@@ -213,9 +215,9 @@ $(function () {
               '<div class="d-flex justify-content-sm-center align-items-sm-center">' +
               '<button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>' +
               '<div class="dropdown-menu dropdown-menu-end m-0">' +
-              '<a href="app-ecommerce-order-details.html" class="dropdown-item">View</a>' +
+              '<a href="'+attachmentBookUrl+'" class="dropdown-item">Kitob biriktirish</a>' +
               '<a href="javascript:0;" class="dropdown-item delete-record">' +
-              'Delete' +
+              'Biriktirilgan kitoblarni korish ' +
               '</a>' +
               '</div>' +
               '</div>'

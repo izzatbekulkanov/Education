@@ -3,7 +3,7 @@
  */
 
 'use strict';
-
+var addInvoiceUrl = "add_book";
 $(function () {
   // Variable declaration for table
   var dt_invoice_table = $('.invoice-list-table');
@@ -204,12 +204,13 @@ $(function () {
         searchPlaceholder: 'Search Invoice'
       },
       // Buttons with Dropdown
+
       buttons: [
         {
-          text: '<i class="ti ti-plus me-md-1"></i><span class="d-md-inline-block d-none">Create Invoice</span>',
+          text: '<i class="ti ti-plus me-md-1"></i><span class="d-md-inline-block d-none">Kitob qoshish</span>',
           className: 'btn btn-primary',
           action: function (e, dt, button, config) {
-            window.location = 'app-invoice-add.html';
+            window.location = addInvoiceUrl;
           }
         }
       ],
