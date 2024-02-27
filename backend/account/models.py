@@ -9,7 +9,7 @@ class CustomUserManager(BaseUserManager):
 
     def _generate_random_username(self):
         """Generate a random 9-digit number."""
-        random_number = ''.join(random.choices(string.digits, k=9))
+        random_number = ''.join(random.choices(string.digits, k=12))
         return '309' + random_number  # Adding '309' as prefix
 
     def _create_user(self, email, password=None, **extra_fields):
@@ -44,8 +44,17 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
     username = models.CharField(max_length=9, default=CustomUserManager()._generate_random_username, unique=True)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
+    age = models.PositiveIntegerField(null=True, blank=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+    image = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    role = models.CharField(max_length=20, null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
+    password_save = models.CharField(_('password save'), max_length=128)  # Added password_save field
 
     USERNAME_FIELD = 'email'  # Foydalanuvchilar email orqali login qila oladilar
     REQUIRED_FIELDS = ['username']  # username kerakli maydon
-
     objects = CustomUserManager()

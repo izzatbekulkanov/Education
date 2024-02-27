@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html
+        lang="en"
+        class="light-style customizer-hide"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="{% static 'assets/"
+        data-template="horizontal-menu-template-no-customizer">
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+
+    <title>Login Basic - Pages | Vuexy - Bootstrap Admin Template</title>
+
+    <meta name="description" content=""/>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon/favicon.ico' %}"/>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+            rel="stylesheet"/>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/tabler-icons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/flag-icons.css' %}"/>
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/rtl/core.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/rtl/theme-default.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}"/>
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/node-waves/node-waves.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/typeahead-js/typeahead.css' %}"/>
+    <!-- Vendor -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/libs/@form-validation/umd/styles/index.min.css' %}"/>
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/css/pages/page-auth.css' %}"/>
+
+    <!-- Helpers -->
+    <script src="{% static 'assets/vendor/js/helpers.js' %}"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="{% static 'assets/js/config.js' %}"></script>
+</head>
+
+<body>
+<!-- Content -->
+
+<div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+            <!-- Login -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center mb-4 mt-2">
+                        <a href="{% url 'login' %}" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-checkered-filled"
+                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"
+                                                                              fill="none"/><path
+                            d="M11.013 12v9.754a13 13 0 0 1 -8.733 -9.754h8.734zm9.284 3.794a13 13 0 0 1 -7.283 5.951l-.001 -9.745h8.708a12.96 12.96 0 0 1 -1.424 3.794zm-9.283 -13.268l-.001 7.474h-8.986c-.068 -1.432 .101 -2.88 .514 -4.282a1 1 0 0 1 1.005 -.717a11 11 0 0 0 7.192 -2.256l.276 -.219zm1.999 7.474v-7.453l-.09 -.073a11 11 0 0 0 7.189 2.537l.342 -.01a1 1 0 0 1 1.005 .717c.413 1.403 .582 2.85 .514 4.282h-8.96z"
+                            stroke-width="0" fill="currentColor"/></svg>                  </span>
+                            <span class="app-brand-text demo text-body fw-bold ms-1">UXIFAR</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-1 pt-2">Izzatbek Ulkanov</h4>
+                    <p class="mb-4">Namangan state university</p>
+
+                    <form id="formAuthentication" class="mb-3" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email or Username</label>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="email"
+                                    name="login-email"
+                                    placeholder="Enter your email or username"
+                                    autofocus/>
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Password</label>
+                                <a href="#">
+                                    <small>Forgot Password?</small>
+                                </a>
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input
+                                        type="password"
+                                        id="password"
+                                        class="form-control"
+                                        name="login-password"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                        aria-describedby="password"/>
+                                <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me"/>
+                                <label class="form-check-label" for="remember-me"> Remember Me </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                        </div>
+                    </form>
+                    <p class="text-center">
+                        <span>New on our platform?</span>
+                        <a href="{% url 'register' %}">
+                            <span>Create an account</span>
+                        </a>
+                    </p>
+
+                    <div class="divider my-4">
+                        <div class="divider-text">or</div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
+                            <i class="tf-icons fa-brands fa-facebook-f fs-5"></i>
+                        </a>
+
+                        <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
+                            <i class="tf-icons fa-brands fa-google fs-5"></i>
+                        </a>
+
+                        <a href="javascript:;" class="btn btn-icon btn-label-twitter">
+                            <i class="tf-icons fa-brands fa-twitter fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
+
+<!-- / Content -->
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+
+<script src="{% static 'assets/vendor/libs/jquery/jquery.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/popper/popper.js' %}"></script>
+<script src="{% static 'assets/vendor/js/bootstrap.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/node-waves/node-waves.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/hammer/hammer.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/i18n/i18n.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/typeahead-js/typeahead.js' %}"></script>
+<script src="{% static 'assets/vendor/js/menu.js' %}"></script>
+
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+<script src="{% static 'assets/vendor/libs/@form-validation/umd/bundle/popular.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js' %}"></script>
+<script src="{% static 'assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js' %}"></script>
+
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<!-- Page JS -->
+<script src="{% static 'assets/js/pages-auth.js' %}"></script>
+</body>
+</html>
