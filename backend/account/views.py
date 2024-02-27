@@ -35,6 +35,9 @@ def logout_view(request):
     logout(request)
     return redirect('login')  # Foydalanuvchi avtorizatsiyadan chiqqandan so'ng o'tkaziladigan URL
 
-def user_list_view(request):
-    return render(request, 'app/users/users_list.html')
+def students_list_view(request):
+    return render(request, 'app/users/students.html')
+def employees_list_view(request):
+    return render(request, 'app/users/employees.html')
+
 
