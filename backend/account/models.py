@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 import random
 import string
 
+
+
 class CustomUserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
 
@@ -22,10 +24,12 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password=None, role=None, **extra_fields):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         extra_fields.setdefault('username', self._generate_random_username())
+        if role:
+            extra_fields.setdefault('role', role)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password=None, **extra_fields):
@@ -42,6 +46,16 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
+    user_role_choices = [
+        ('dean', 'Dean'),
+        ('head', 'Head'),
+        ('rector', 'Rector'),
+        ('simple', 'Simple'),
+        ('admin', 'Admin'),
+        ('student', 'Student'),
+        ('employee', 'Employee'),
+
+    ]
     email = models.EmailField(_('email address'), unique=True)
     username = models.CharField(max_length=9, default=CustomUserManager()._generate_random_username, unique=True)
     first_name = models.CharField(max_length=30, blank=True)
@@ -54,6 +68,13 @@ class CustomUser(AbstractUser):
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     password_save = models.CharField(_('password save'), max_length=128)  # Added password_save field
+    user_role = models.CharField(max_length=20, choices=user_role_choices, null=True, blank=True)
+
+    # Additional fields for the university
+    passport_serial = models.CharField(max_length=20, null=True, blank=True)
+    passport_issue_date = models.DateField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    # group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='universities', null=True, blank=True)
 
     USERNAME_FIELD = 'email'  # Foydalanuvchilar email orqali login qila oladilar
     REQUIRED_FIELDS = ['username']  # username kerakli maydon

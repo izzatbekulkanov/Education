@@ -14,15 +14,16 @@ SECRET_KEY = 'django-insecure-v72m0fl7fqcs=b9s*u)3ts$vm&65-!u95iowx#+&a*c!*8dn4d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-
+    # Jazzmin qo'shimcha tashqi ilovalari
     'jazzmin',
 
+    # Boshqa tashqi ilovalar
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,8 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Ichki ilovalar
     'account',
     'dashboard',
+    'library',
+    'education',
+    'post',
 ]
 
 MIDDLEWARE = [

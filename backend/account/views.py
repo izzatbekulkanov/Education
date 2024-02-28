@@ -40,4 +40,11 @@ def students_list_view(request):
 def employees_list_view(request):
     return render(request, 'app/users/employees.html')
 
+def student_statistics(request):
+    return render(request, 'app/users/student_statistics.html')
+
+def employee_statistics(request):
+    return render(request, 'app/users/employee_statistics.html')
+
+
 
